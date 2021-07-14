@@ -13,6 +13,8 @@ app.use((req, res, next) => {
 
 require('./app/controllers/auth')(app);
 
+app.use(express.static(__dirname + '/dist/gitproject'));
+
 app.use('/*', (req, res) => {
   res.sendFile(path.join(__dirname + '/dist/gitproject/index.html'));
 });
