@@ -1,0 +1,63 @@
+.auth-login {
+  min-height: 100vh;
+  background: linear-gradient(0deg, #fff 50%, ghostwhite 0%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .box {
+    padding: 40px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 30px 30px -5px #0000001a;
+    transition: 1s;
+
+    header {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 30px;
+      }
+
+      h1 {
+        margin: 0px;
+        padding-left: 10px;
+        font-weight: bold;
+
+        span {
+          font-weight: 200;
+        }
+      }
+    }
+
+    .action {
+      margin-top: 20px;
+
+      div {
+        height: 1px;
+        width: 60px;
+        background: #b1b1b1;
+      }
+
+      button {
+        cursor: pointer;
+        margin-top: 20px;
+        border: unset;
+        padding: 10px 20px;
+        width: 100%;
+        outline: none;
+        transition: 0.35s;
+      }
+
+      button:hover {
+        color: #fff;
+        background: #000;
+      }
+    }
+  }
+
+  .box:hover {
+    box-shadow: 0px 30px 60px -5px #00000036;
+  }
+}
