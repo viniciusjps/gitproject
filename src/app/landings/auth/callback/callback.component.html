@@ -1,0 +1,18 @@
+<div class="auth-callback">
+  <div class="loading" *ngIf="status.loading">
+    <div class="loader">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div class="warning" *ngIf="status.error">
+    <span class="material-icons">error_outline</span>
+    <p>Algo de errado aconteceu, tente novamente mais tarde.</p>
+    <button (click)="backLogin()">
+      <span class="material-icons">arrow_back_ios</span>
+      Voltar
+    </button>
+  </div>
+</div>

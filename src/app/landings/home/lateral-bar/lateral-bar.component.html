@@ -1,0 +1,62 @@
+<div class="lateral-bar">
+  <div class="loading" *ngIf="status.loading">
+    <div class="loader">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div class="error" *ngIf="status.error">
+    <span class="material-icons">error_outline</span>
+    <p>Algo de errado aconteceu, tente novamente mais tarde.</p>
+  </div>
+  <div class="content" *ngIf="!status.loading && this.getLoggedUser()">
+    <header>
+      <img src="{{ this.getLoggedUser().avatar_url }}" alt="Avatar">
+      <div>
+        <p>{{ this.getLoggedUser().name }}</p>
+        <p>@{{ this.getLoggedUser().login }}</p>
+      </div>
+    </header>
+    <div class="status">
+      <div>
+        <span class="material-icons">supervisor_account</span>
+        <p>
+          <strong>{{ this.getLoggedUser().followers }}</strong>
+          seguidores
+        </p>
+      </div>
+      <div>
+        <span class="material-icons">supervisor_account</span>
+        <p>
+          <strong>{{ this.getLoggedUser().following }}</strong>
+          seguindo
+        </p>
+      </div>
+    </div>
+    <div class="details">
+      <p *ngIf="this.getLoggedUser().bio">{{ this.getLoggedUser().bio }}</p>
+      <p *ngIf="this.getLoggedUser().email">
+        <span class="material-icons">mail_outline</span>
+        {{ this.getLoggedUser().email }}
+      </p>
+      <p *ngIf="this.getLoggedUser().blog">
+        <span class="material-icons">link</span>
+        {{ this.getLoggedUser().blog }}
+      </p>
+      <p *ngIf="this.getLoggedUser().company">
+        <span class="material-icons">business</span>
+        {{ this.getLoggedUser().company }}
+      </p>
+      <p *ngIf="this.getLoggedUser().location">
+        <span class="material-icons">location_on</span>
+        {{ this.getLoggedUser().location }}
+      </p>
+      <a *ngIf="this.getLoggedUser().html_url" href="{{ this.getLoggedUser().html_url }}">
+        Acessar perfil do Github
+        <span class="material-icons">open_in_new</span>
+      </a>
+    </div>
+  </div>
+</div>
