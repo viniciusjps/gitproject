@@ -11,6 +11,7 @@ import { LateralBarComponent } from './landings/home/lateral-bar/lateral-bar.com
 import { SessionService } from './services/session/session.service';
 import { RepositoryListComponent } from './landings/home/repository-list/repository-list.component';
 import { SearchBarComponent } from './landings/home/search-bar/search-bar.component';
+import { ViewRepoComponent } from './landings/home/view-repo/view-repo.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SearchBarComponent } from './landings/home/search-bar/search-bar.compon
     DashboardComponent,
     LateralBarComponent,
     RepositoryListComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    ViewRepoComponent
   ],
   imports: [
     BrowserModule,

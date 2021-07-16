@@ -1,7 +1,7 @@
-<div *ngIf="isLogged()">
+<div *ngIf="this.isLogged()">
   <app-search-bar (searchEvent)="this.getListOfRepositories(1,$event)"></app-search-bar>
 </div>
-<div class="repository-list" *ngIf="isLogged()">
+<div class="repository-list" *ngIf="this.isLogged()">
   <header>
     <h2 *ngIf="!status.filtered">Seus <span>repositórios</span></h2>
     <h2 *ngIf="status.filtered">Sua <span>seleção</span></h2>
@@ -20,22 +20,27 @@
       <p>Algo de errado aconteceu, tente novamente mais tarde.</p>
     </div>
     <div class="list" *ngIf="!status.loading && !status.error">
-      <button *ngIf="!status.filtered" (click)="this.getListOfRepositoriesStarred()">
+      <button *ngIf="!status.filtered && page === 1" (click)="this.getListOfRepositoriesStarred()">
         Visualizar repositórios com estrela
         <span class="material-icons">filter_list</span>
       </button>
-      <button *ngIf="status.filtered" (click)="this.getListOfRepositories()">
-        Limpar seleção
+      <button *ngIf="status.filtered || page !== 1" (click)="this.getListOfRepositories()">
+        {{ page === 1 ? 'Limpar seleção' : 'Voltar para primeira página'}}
         <span class="material-icons">clear</span>
       </button>
       <div class="warning" *ngIf="repositories.length === 0">
         <span class="material-icons">error_outline</span>
-        <p>Nenhum repositório foi encontrado.</p>
+        <p *ngIf="page !== 1">Parece que você já viu todos os seus repositórios.</p>
+        <p *ngIf="page === 1">Nenhum repositório foi encontrado.</p>
       </div>
-      <div class="item" *ngFor="let item of repositories; let i = index">
+      <div class="item" *ngFor="let item of repositories; let i = index" (click)="viewRepo.next(item)">
         <div class="header">
-          <p>{{ item.name }}</p>
+          <p>
+            {{ item.name }}
+          </p>
+          <span class="material-icons" *ngIf="status.starred">star</span>
           <span [class.public]="!item.private">{{ item.private ? 'Privado' : 'Público' }}</span>
+          <span class="material-icons edit">local_offer</span>
         </div>
         <p *ngIf="item.description" class="inf">{{ item.description }}</p>
         <div class="details">
@@ -46,6 +51,15 @@
           </a>
         </div>
       </div>
+      <div class="actions-footer" *ngIf="!status.filtered">
+        <button (click)="this.getListOfRepositories(this.page - 1)" [disabled]="page === 1">
+          Anterior
+        </button>
+        <button (click)="this.getListOfRepositories(this.page + 1)" [disabled]="repositories.length === 0">
+          Próximo
+        </button>
+      </div>
     </div>
   </div>
 </div>
+<app-view-repo [open]="viewRepo.asObservable()"></app-view-repo>

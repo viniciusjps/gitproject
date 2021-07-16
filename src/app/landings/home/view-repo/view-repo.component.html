@@ -1,0 +1,45 @@
+<div class="repository" *ngIf="status.opened">
+  <div class="content">
+    <header>
+      <span class="material-icons" (click)="closeModal()">close</span>
+      <h2>Editar <span>tags</span></h2>
+    </header>
+    <div class="loading" *ngIf="status.loading">
+      <div class="loader">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <p *ngIf="status.error" class="error">Algo de errado aconteceu, tente novamente mais tarde.</p>
+    <div *ngIf="!status.loading && !status.error && repo">
+      <p class="title">{{ repo.name }}</p>
+      <div class="body">
+        <div class="item">
+          <label>Adicionar nova tag</label>
+          <input type="text" placeholder="Ex: docker" (keyup.enter)="addTag(tag.value); tag.value = ''" #tag>
+          <button (click)="addTag(tag.value); tag.value = ''"><span class="material-icons">add</span></button>
+          <p class="instruction">Pressione Enter para adicionar</p>
+        </div>
+        <div class="list">
+          <p *ngIf="status.duplicated" class="warning">
+            <span class="material-icons">info</span>
+            Não é permitido tags repetidas.
+          </p>
+          <p class="warning" *ngIf="repo.tags.length === 0">
+            Parece que você ainda não adicionou nenhuma tag.
+          </p>
+          <p *ngFor="let item of repo.tags; let i = index">
+            {{ item }}
+            <span class="material-icons" (click)="removeTag(i)">highlight_off</span>
+          </p>
+        </div>
+      </div>
+      <div class="footer">
+        <button (click)="updateRepo()" [disabled]="status.updating">{{ status.updating ? 'Atualizando' : 'Salvar'
+          }}</button>
+      </div>
+    </div>
+  </div>
+</div>
