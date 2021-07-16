@@ -151,6 +151,40 @@
           margin-left: 8px;
         }
       }
+
+      button {
+        cursor: pointer;
+        outline: none;
+        border: unset;
+        border-radius: 5px;
+        padding: 5px 12px;
+        display: flex;
+        align-items: center;
+        background: #ff6b61;
+        color: #fff;
+        font-size: 12px;
+
+        span {
+          font-size: inherit;
+          color: inherit;
+          user-select: none;
+          margin-right: 6px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .lateral-bar {
+    width: 100%;
+    box-shadow: unset;
+    border-radius: unset;
+
+    .content {
+      header {
+        border-radius: unset;
+      }
     }
   }
 }

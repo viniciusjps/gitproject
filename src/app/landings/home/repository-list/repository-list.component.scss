@@ -183,3 +183,36 @@
     }
   }
 }
+
+@media only screen and (max-width: 900px) {
+  .repository-list {
+    margin: 0px;
+    border-radius: unset;
+    width: 100%;
+
+    .content {
+      .list {
+        .item {
+          .details {
+            flex-direction: column;
+
+            a {
+              width: 100%;
+              border-top: 1px solid gainsboro;
+              padding-top: 6px;
+              margin-top: 10px;
+              justify-content: end;
+            }
+          }
+        }
+      }
+
+      .actions-footer {
+        button,
+        button:last-child {
+          border-radius: unset;
+        }
+      }
+    }
+  }
+}

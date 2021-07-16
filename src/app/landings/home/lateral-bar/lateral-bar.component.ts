@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import axios from 'axios';
 import { SessionService } from 'src/app/services/session/session.service';
 import { environment } from 'src/environments/environment';
@@ -13,7 +14,8 @@ export class LateralBarComponent implements OnInit {
   public status = { loading: true, error: false };
 
   constructor(
-    private session: SessionService
+    private session: SessionService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -50,6 +52,11 @@ export class LateralBarComponent implements OnInit {
    */
   public getLoggedUser(): any {
     return this.session.getUserData();
+  }
+
+  public logOut(): void {
+    this.session.logOut();
+    this.router.navigate(['/auth/login']);
   }
 
 }

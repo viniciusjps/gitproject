@@ -61,3 +61,17 @@
     color: #fff;
   }
 }
+
+@media only screen and (max-width: 900px) {
+  .search-bar {
+    margin: 0px;
+    box-shadow: unset;
+    border-radius: unset;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #f4f4f4;
+
+    header {
+      border-radius: unset;
+    }
+  }
+}

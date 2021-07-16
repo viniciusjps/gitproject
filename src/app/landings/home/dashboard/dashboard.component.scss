@@ -2,7 +2,7 @@
   background: #fff;
   padding: 50px;
   position: relative;
-  
+
   .content {
     display: flex;
     justify-content: center;
@@ -20,4 +20,14 @@
   top: 0px;
   left: 0px;
   z-index: 0;
+}
+
+@media only screen and (max-width: 900px) {
+  .dash {
+    padding: 0px;
+
+    .content {
+      flex-direction: column;
+    }
+  }
 }
