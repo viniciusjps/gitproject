@@ -12,6 +12,10 @@ const RepoSchema = new mongoose.Schema({
   user: {
     type: String,
     required: true,
+  },
+  github_data: {
+    type: Object,
+    required: true,
   }
 }, {
   versionKey: false,
