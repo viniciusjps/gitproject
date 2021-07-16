@@ -3,20 +3,20 @@
   margin-bottom: 40px;
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0px 30px 30px -5px #0000001a;
+  box-shadow: 0px 10px 20px -5px #0000001a;
   animation: slide_in 0.4s ease 0.2s backwards;
   overflow: hidden;
 
   header {
-    padding: 20px 30px;
-    background: #525252;
+    padding: 15px 30px;
+    background: #61a2f1;
     border-radius: 10px 10px 0px 0px;
-    
+
     h2 {
       color: #fff;
       margin: 0px;
       font-size: 18px;
-      
+
       span {
         font-weight: 100;
       }
@@ -34,10 +34,16 @@
     outline: none;
     padding: 5px 30px;
     transition: 0.3s;
+    border-radius: unset;
   }
 
   input:focus {
-    background: #fbfbfb;
+    background: #558ed4;
+    color: #fff;
+  }
+
+  input:focus::placeholder {
+    color: #fff;
   }
 
   button {
@@ -51,7 +57,7 @@
 
   button:hover {
     cursor: pointer;
-    background: #383838;
+    background: #525252;
     color: #fff;
   }
 }

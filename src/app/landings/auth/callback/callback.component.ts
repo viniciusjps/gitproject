@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import axios from 'axios';
 import { SessionService } from 'src/app/services/session/session.service';
 

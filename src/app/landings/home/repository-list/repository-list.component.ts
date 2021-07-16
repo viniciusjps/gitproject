@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SessionService } from 'src/app/services/session/session.service';
 import { environment } from 'src/environments/environment';
 import axios from 'axios';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-repository-list',
@@ -12,7 +13,8 @@ export class RepositoryListComponent implements OnInit {
 
   public page: number = 1;
   public repositories: any[] = [];
-  public status = { loading: true, error: false, filtered: false };
+  public status = { loading: true, error: false, filtered: false, starred: false };
+  public viewRepo: Subject<any> = new Subject<any>();
 
   constructor(
     private session: SessionService
@@ -29,8 +31,9 @@ export class RepositoryListComponent implements OnInit {
    */
   public getListOfRepositories(page = 1, searchEvent?: string): void {
     this.page = page;
-    let uri = environment.API_ENDPOINT + `/repo?page=${page}`;
     this.status.filtered = !!searchEvent;
+    this.status.starred = false;
+    let uri = environment.API_ENDPOINT + `/repo?page=${page}`;
     if (searchEvent) {
       uri += `&q=${searchEvent}`;
     }
@@ -47,8 +50,9 @@ export class RepositoryListComponent implements OnInit {
    * Method to get the user's favorite repositories
    */
   public getListOfRepositoriesStarred(): void {
-    let uri = environment.API_ENDPOINT + `/repo?starred=true`;
     this.status.filtered = true;
+    this.status.starred = true;
+    const uri = environment.API_ENDPOINT + `/repo?starred=true`;
     this.getData(uri).then(res => {
       if (res) {
         this.repositories = res?.data || [];
@@ -86,5 +90,4 @@ export class RepositoryListComponent implements OnInit {
   public isLogged(): boolean {
     return this.session.isLogged();
   }
-
 }

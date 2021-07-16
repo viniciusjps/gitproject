@@ -2,17 +2,17 @@
   margin-left: 40px;
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0px 30px 30px -5px #0000001a;
+  box-shadow: 0px 35px 35px -5px #0000001a;
   animation: slide_in 0.4s ease 0.4s backwards;
   width: 500px;
 
   header {
-    padding: 20px 30px;
-    background: #525252;
+    padding: 15px 30px;
+    background: #f3f3f3;
     border-radius: 10px 10px 0px 0px;
 
     h2 {
-      color: #fff;
+      color: #131313;
       margin: 0px;
       font-size: 18px;
 
@@ -27,7 +27,6 @@
     .warning {
       display: flex;
       align-items: center;
-      justify-content: center;
       padding: 30px;
 
       p {
@@ -43,7 +42,12 @@
       }
     }
 
-    .list {
+    .loading {
+      justify-content: center;
+    }
+
+    .list,
+    .actions-footer {
       animation: slide_in 0.4s ease backwards;
 
       button {
@@ -54,8 +58,10 @@
         display: flex;
         align-items: center;
         margin-left: auto;
-        background: #f4f4f4;
+        background: #61a2f1;
+        color: #fff;
         transition: 0.3s;
+        margin-bottom: 10px;
         animation: slide_in 0.4s ease backwards;
 
         span {
@@ -73,7 +79,6 @@
         .header {
           display: flex;
           align-items: flex-start;
-          justify-content: space-between;
           padding-bottom: 8px;
 
           p {
@@ -90,10 +95,24 @@
             padding: 4px 12px;
             text-transform: lowercase;
             color: #fff;
+            margin-left: auto;
           }
 
           span.public {
             background: #8bc34a;
+          }
+
+          span.material-icons {
+            margin-left: 8px;
+            background: unset;
+            padding: 2px;
+            color: #ff9800;
+            font-size: 15px;
+            user-select: none;
+          }
+
+          span.material-icons.edit {
+            color: #000;
           }
         }
 
@@ -131,7 +150,35 @@
       }
 
       .item:hover {
+        cursor: pointer;
         background: #f9f9f9;
+      }
+    }
+
+    .actions-footer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      button {
+        margin-bottom: 0px;
+        margin-left: unset;
+        width: 100%;
+        justify-content: center;
+        transition: 0.3s;
+      }
+
+      button:last-child {
+        border-radius: 0px 0px 15px 0px;
+      }
+
+      button:hover {
+        background: #558ed4;
+      }
+
+      button:disabled {
+        background: #f4f4f4;
+        color: gray;
       }
     }
   }

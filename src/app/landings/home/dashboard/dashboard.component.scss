@@ -1,6 +1,23 @@
 .dash {
-  background: linear-gradient(0deg, #fff 50%, ghostwhite 0%);
-  display: flex;
-  justify-content: center;
+  background: #fff;
   padding: 50px;
+  position: relative;
+  
+  .content {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.dash::after {
+  content: "";
+  height: 120px;
+  width: 100%;
+  background: linear-gradient(45deg, #8053f133, #53c6f133);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 0;
 }
