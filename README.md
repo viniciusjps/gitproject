@@ -1,4 +1,6 @@
 # Gitproject
+Esse projeto apresenta um pequeno cliente para a visualização de repositórios do GitHub.
+<hr>
 Projeto realizado com Angular 12.1.1
 
 ## Instruções de desenvolvimento
