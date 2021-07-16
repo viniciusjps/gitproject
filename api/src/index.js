@@ -17,6 +17,7 @@ app.use((req, res, next) => {
 
 require('./app/controllers/authController')(app);
 require('./app/controllers/userController')(app);
+require('./app/controllers/repoController')(app);
 
 app.use(express.static(__dirname + '/../../dist/'));
 
