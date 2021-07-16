@@ -10,25 +10,31 @@ router.get('/', async (req, res) => {
     const valid_query = ['access_token', 'token_type'];
     validQuery(res, query, valid_query);
     let uri = 'https://api.github.com/';
-    if (query.q) {
-      uri += `search/repositories?q=${query.q}`;
-    } else if (query.starred) {
-      uri += 'user/starred?';
-    } else {
-      uri += `user/repos?per_page=10&page=${query.page || 1}`;
-    }
-    await axios.get(uri, {
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': `${query.token_type} ${query.access_token}`
+    if (!query.tag) {
+      if (query.starred) {
+        uri += 'user/starred?';
+      } else {
+        uri += `user/repos?per_page=10&page=${query.page || 1}`;
       }
-    }).then(response => {
-      return res.send(response?.data);
+    }
+    await Promise.all([
+      query.tag
+        ? Repositories.find({ tags: { $regex: new RegExp(query.tag), $options: 'i' } })
+        : axios.get(uri, {
+          headers: { 'Accept': 'application/json', 'Authorization': `${query.token_type} ${query.access_token}` }
+        })
+    ]).then(result => {
+      if (query.tag) {
+        const data = result[0].map(item => item.github_data);
+        return res.send(data);
+      } else {
+        return res.send(result[0]?.data);
+      };
     }).catch(err => {
-      console.log(err);
       return res.status(400).send({ error: 'Failed to get list of repositories' });
     });
   } catch (error) {
+    console.log(error);
     return res.status(500).send({ error: 'Internal error. Failed to get list of repositories' });
   }
 });

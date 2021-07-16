@@ -3,7 +3,8 @@
     <h2>Buscar <span>repositórios</span></h2>
   </header>
   <div>
-    <input type="text" placeholder="Procurar..." #search>
-    <button (click)="searchRepositories(search.value)">Buscar</button>
+    <input type="text" placeholder="Procurar por tags..."
+      (keyup.enter)="searchRepositories(search.value); search.value = ''" #search>
+    <button (click)="this.searchRepositories(search.value); search.value = ''">Buscar</button>
   </div>
 </div>
