@@ -19,7 +19,7 @@
       <span class="material-icons">error_outline</span>
       <p>Algo de errado aconteceu, tente novamente mais tarde.</p>
     </div>
-    <div class="list" *ngIf="!status.loading">
+    <div class="list" *ngIf="!status.loading && !status.error">
       <button *ngIf="!status.filtered" (click)="this.getListOfRepositoriesStarred()">
         Visualizar repositórios com estrela
         <span class="material-icons">filter_list</span>
