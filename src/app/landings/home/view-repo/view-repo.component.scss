@@ -227,3 +227,25 @@
     }
   }
 }
+
+@media only screen and (max-width: 900px) {
+  .repository {
+    height: 100%;
+    width: 100%;
+    align-items: unset;
+
+    .content {
+      border-radius: unset;
+
+      header {
+        border-radius: unset;
+
+        span.material-icons {
+          top: 0px;
+          right: 0px;
+          border-radius: 0px 0px 0px 5px;
+        }
+      }
+    }
+  }
+}

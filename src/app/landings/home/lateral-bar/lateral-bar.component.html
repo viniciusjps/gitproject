@@ -53,6 +53,10 @@
         <span class="material-icons">location_on</span>
         {{ this.getLoggedUser().location }}
       </p>
+      <button (click)="logOut()">
+        <span class="material-icons">logout</span>
+        Sair
+      </button>
       <a *ngIf="this.getLoggedUser().html_url" href="{{ this.getLoggedUser().html_url }}">
         Acessar perfil completo no Github
         <span class="material-icons">open_in_new</span>
