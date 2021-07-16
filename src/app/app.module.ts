@@ -9,6 +9,8 @@ import { CallbackComponent } from './landings/auth/callback/callback.component';
 import { DashboardComponent } from './landings/home/dashboard/dashboard.component';
 import { LateralBarComponent } from './landings/home/lateral-bar/lateral-bar.component';
 import { SessionService } from './services/session/session.service';
+import { RepositoryListComponent } from './landings/home/repository-list/repository-list.component';
+import { SearchBarComponent } from './landings/home/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { SessionService } from './services/session/session.service';
     LoginComponent,
     CallbackComponent,
     DashboardComponent,
-    LateralBarComponent
+    LateralBarComponent,
+    RepositoryListComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,

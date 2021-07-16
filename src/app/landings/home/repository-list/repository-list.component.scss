@@ -1,0 +1,138 @@
+.repository-list {
+  margin-left: 40px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 30px 30px -5px #0000001a;
+  animation: slide_in 0.4s ease 0.4s backwards;
+  width: 500px;
+
+  header {
+    padding: 20px 30px;
+    background: #525252;
+    border-radius: 10px 10px 0px 0px;
+
+    h2 {
+      color: #fff;
+      margin: 0px;
+      font-size: 18px;
+
+      span {
+        font-weight: 100;
+      }
+    }
+  }
+
+  .content {
+    .loading,
+    .warning {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+
+      p {
+        font-size: 14px;
+        margin: 0px;
+      }
+
+      span {
+        font-size: 20px;
+        user-select: none;
+        margin-right: 8px;
+        color: #f9982d;
+      }
+    }
+
+    .list {
+      animation: slide_in 0.4s ease backwards;
+
+      button {
+        cursor: pointer;
+        border: unset;
+        padding: 13px 30px;
+        border-radius: 0px 0px 0px 15px;
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        background: #f4f4f4;
+        transition: 0.3s;
+        animation: slide_in 0.4s ease backwards;
+
+        span {
+          font-size: inherit;
+          user-select: none;
+          margin-left: 8px;
+        }
+      }
+
+      .item {
+        padding: 25px 30px;
+        border-bottom: 1px solid #efefef;
+        transition: 0.3s;
+
+        .header {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          padding-bottom: 8px;
+
+          p {
+            margin: 0px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 15px;
+          }
+
+          span {
+            border-radius: 25px;
+            font-size: 10px;
+            background: #525252;
+            padding: 4px 12px;
+            text-transform: lowercase;
+            color: #fff;
+          }
+
+          span.public {
+            background: #8bc34a;
+          }
+        }
+
+        p.inf {
+          margin: 0px;
+          margin-bottom: 16px;
+          font-size: 13px;
+        }
+
+        .details {
+          display: flex;
+          font-size: 10px;
+
+          p {
+            margin: 0px;
+            margin-right: 14px;
+          }
+
+          a {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            text-decoration: unset;
+            text-transform: lowercase;
+            color: #525252;
+
+            span {
+              font-size: inherit;
+              color: inherit;
+              user-select: none;
+              margin-left: 4px;
+            }
+          }
+        }
+      }
+
+      .item:hover {
+        background: #f9f9f9;
+      }
+    }
+  }
+}

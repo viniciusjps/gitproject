@@ -1,0 +1,51 @@
+<div *ngIf="isLogged()">
+  <app-search-bar (searchEvent)="this.getListOfRepositories(1,$event)"></app-search-bar>
+</div>
+<div class="repository-list" *ngIf="isLogged()">
+  <header>
+    <h2 *ngIf="!status.filtered">Seus <span>repositórios</span></h2>
+    <h2 *ngIf="status.filtered">Sua <span>seleção</span></h2>
+  </header>
+  <div class="content">
+    <div class="loading" *ngIf="status.loading">
+      <div class="loader">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div class="warning" *ngIf="status.error">
+      <span class="material-icons">error_outline</span>
+      <p>Algo de errado aconteceu, tente novamente mais tarde.</p>
+    </div>
+    <div class="list" *ngIf="!status.loading">
+      <button *ngIf="!status.filtered" (click)="this.getListOfRepositoriesStarred()">
+        Visualizar repositórios com estrela
+        <span class="material-icons">filter_list</span>
+      </button>
+      <button *ngIf="status.filtered" (click)="this.getListOfRepositories()">
+        Limpar seleção
+        <span class="material-icons">clear</span>
+      </button>
+      <div class="warning" *ngIf="repositories.length === 0">
+        <span class="material-icons">error_outline</span>
+        <p>Nenhum repositório foi encontrado.</p>
+      </div>
+      <div class="item" *ngFor="let item of repositories; let i = index">
+        <div class="header">
+          <p>{{ item.name }}</p>
+          <span [class.public]="!item.private">{{ item.private ? 'Privado' : 'Público' }}</span>
+        </div>
+        <p *ngIf="item.description" class="inf">{{ item.description }}</p>
+        <div class="details">
+          <p *ngIf="item.id"><strong>Id:</strong> {{ item.id }}</p>
+          <p *ngIf="item?.owner?.login"><strong>Owner:</strong> {{ item.owner.login }}</p>
+          <a target="_blank" href="{{ item.html_url }}">
+            abrir em nova guia <span class="material-icons">launch</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

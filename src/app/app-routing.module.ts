@@ -3,13 +3,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { CallbackComponent } from './landings/auth/callback/callback.component';
 import { LoginComponent } from './landings/auth/login/login.component';
 import { DashboardComponent } from './landings/home/dashboard/dashboard.component';
+import { RepositoryListComponent } from './landings/home/repository-list/repository-list.component';
 import { SessionGuard } from './session.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
-    canActivate: [SessionGuard]
+    canActivate: [SessionGuard],
+    children: [
+      {
+        path: '',
+        component: RepositoryListComponent
+      }
+    ]
   },
   {
     path: 'auth',

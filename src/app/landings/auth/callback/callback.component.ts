@@ -51,7 +51,6 @@ export class CallbackComponent implements OnInit {
           this.session.logIn(res.data);
           this.router.navigate(['']);
         }
-        console.log(res.data);
       }).catch(err => {
         this.status.error = true;
       });
