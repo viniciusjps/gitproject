@@ -46,7 +46,7 @@
         <div class="details">
           <p *ngIf="item.id"><strong>Id:</strong> {{ item.id }}</p>
           <p *ngIf="item?.owner?.login"><strong>Owner:</strong> {{ item.owner.login }}</p>
-          <a target="_blank" href="{{ item.html_url }}">
+          <a *ngIf="item.html_url" target="_blank" href="{{ item.html_url }}">
             abrir em nova guia <span class="material-icons">launch</span>
           </a>
         </div>

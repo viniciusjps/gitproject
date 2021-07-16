@@ -77,7 +77,8 @@ export class ViewRepoComponent implements OnInit {
       const payload = {
         git_node_id: this.repo.id,
         tags: this.repo.tags,
-        user: this.session.getUserData().id
+        user: this.session.getUserData().id,
+        github_data: this.repo,
       };
       axios.post(uri, payload)
         .then(res => {

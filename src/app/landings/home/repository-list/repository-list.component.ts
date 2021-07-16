@@ -29,20 +29,16 @@ export class RepositoryListComponent implements OnInit {
    * @param page Page list
    * @param searchEvent Param of search
    */
-  public getListOfRepositories(page = 1, searchEvent?: string): void {
+  public getListOfRepositories(page = 1, tag?: string): void {
     this.page = page;
-    this.status.filtered = !!searchEvent;
+    this.status.filtered = !!tag;
     this.status.starred = false;
     let uri = environment.API_ENDPOINT + `/repo?page=${page}`;
-    if (searchEvent) {
-      uri += `&q=${searchEvent}`;
+    if (tag) {
+      uri += `&tag=${tag}`;
     }
     this.getData(uri).then(res => {
-      if (searchEvent) {
-        this.repositories = res?.data?.items || [];
-      } else {
-        this.repositories = res?.data || [];
-      }
+      this.repositories = res?.data || [];
     });
   }
 
